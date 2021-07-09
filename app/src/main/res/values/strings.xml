@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">YmChatBot Example</string>
+    <!-- Added for SDK -->
+    <string name="application_id_for_provider">com.yellowmessenger.ymchatbotexample.fileprovider</string>
 </resources>

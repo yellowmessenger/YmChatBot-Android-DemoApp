@@ -12,7 +12,7 @@ import com.yellowmessenger.ymchat.models.YMBotEventResponse
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private var botId = "x1587041004122"
+    private var botId = "x1609740331340" //"x1587041004122"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val payloadData = HashMap<String, Any>()
         //Setting Payload Data
         payloadData["some-key"] = "some-value"
+        payloadData["UserId"] = "qweqwe123214qwee23424"
         ymChat.config.payload = payloadData
         ymChat.config.enableHistory = true
 
