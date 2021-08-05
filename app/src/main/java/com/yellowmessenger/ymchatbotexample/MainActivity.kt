@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.yellowmessenger.ymchat.YMChat
 import com.yellowmessenger.ymchat.YMConfig
@@ -12,7 +11,7 @@ import com.yellowmessenger.ymchat.models.YMBotEventResponse
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    private var botId = "x1609740331340" //"x1587041004122"
+    private var botId = "x1587041004122"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,7 +32,10 @@ class MainActivity : AppCompatActivity() {
         ymChat.config.payload = payloadData
         ymChat.config.enableHistory = true
 
-        //setting event listener
+        // To Change the color of status bar, by default it will pick app theme
+        ymChat.config.statusBarColor = R.color.teal_700
+        // To Change the color of close button, default color is white
+        ymChat.config.closeButtonColor = R.color.white
 
         //setting event listener
         ymChat.onEventFromBot { botEvent: YMBotEventResponse ->
