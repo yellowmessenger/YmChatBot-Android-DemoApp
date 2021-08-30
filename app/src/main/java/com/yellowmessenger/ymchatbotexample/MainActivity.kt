@@ -28,9 +28,7 @@ class MainActivity : AppCompatActivity() {
         val payloadData = HashMap<String, Any>()
         //Setting Payload Data
         payloadData["some-key"] = "some-value"
-        payloadData["UserId"] = "qweqwe123214qwee23424"
         ymChat.config.payload = payloadData
-        ymChat.config.enableHistory = true
 
         // To Change the color of status bar, by default it will pick app theme
         ymChat.config.statusBarColor = R.color.teal_700
