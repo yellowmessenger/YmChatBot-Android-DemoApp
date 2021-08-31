@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         payloadData["some-key"] = "some-value"
         payloadData["UserId"] = "qweqwe123214qwee23424"
         ymChat.config.payload = payloadData
-//        ymChat.config.enableHistory = true
+        ymChat.config.enableHistory = true
 
         // To Change the color of status bar, by default it will pick app theme
         ymChat.config.statusBarColor = R.color.teal_700
