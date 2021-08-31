@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
     private fun showNotificationAlert(botId: String) {
         val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this);
         alertDialog.setTitle("Notification")
-        alertDialog.setMessage("Bot id : $botId")
-        alertDialog.setPositiveButton("Ok") { dialogInterface, which ->
+        alertDialog.setMessage("Notification received for the Bot id : $botId")
+        alertDialog.setPositiveButton("Ok") { dialogInterface, _ ->
             dialogInterface.dismiss()
         }
         alertDialog.show()
