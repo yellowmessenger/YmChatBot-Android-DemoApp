@@ -16,7 +16,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.yellowmessenger.ymchatbotexample"
+        applicationId "ai.yellow.demo"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -51,8 +51,18 @@ dependencies {
     //library dependency
     implementation 'com.github.yellowmessenger:YMChatbot-Android:v1.4.+'
 
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
+
+    // Declare the dependencies for the Firebase Cloud Messaging and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }
+
+apply plugin: 'com.google.gms.google-services'
