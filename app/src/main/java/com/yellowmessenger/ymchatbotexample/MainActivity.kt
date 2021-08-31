@@ -3,7 +3,6 @@ package com.yellowmessenger.ymchatbotexample
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
@@ -65,9 +64,7 @@ class MainActivity : AppCompatActivity() {
         val payloadData = HashMap<String, Any>()
         //Setting Payload Data
         payloadData["some-key"] = "some-value"
-        payloadData["UserId"] = "qweqwe123214qwee23424"
         ymChat.config.payload = payloadData
-        ymChat.config.enableHistory = true
 
         // To Change the color of status bar, by default it will pick app theme
         ymChat.config.statusBarColor = R.color.teal_700
