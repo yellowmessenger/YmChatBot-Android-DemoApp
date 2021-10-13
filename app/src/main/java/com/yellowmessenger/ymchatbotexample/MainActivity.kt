@@ -122,6 +122,15 @@ class MainActivity : AppCompatActivity() {
 
         // End
 
+        /**
+         *  To use v2 widget for bot please uncomment below line
+         */
+        // ymChat.config.version = 2
+
+        /**
+         * If your bot is deployed on On-premise or in specific region please set the url in `customBaseUrl`
+         */
+        //ymChat.config.customBaseUrl = "Https:/on.pre,.url"
 
         /**
          * Setting Event Listener
