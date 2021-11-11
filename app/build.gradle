@@ -49,7 +49,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     //library dependency
-    implementation 'com.github.yellowmessenger:YMChatbot-Android:v1.6.1'
+    implementation 'com.github.yellowmessenger:YMChatbot-Android:v1.6.3'
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:28.4.0')
