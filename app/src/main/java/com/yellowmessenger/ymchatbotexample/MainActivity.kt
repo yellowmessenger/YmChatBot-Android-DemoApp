@@ -118,9 +118,15 @@ class MainActivity : AppCompatActivity() {
          }
          */
 
-        ymChat.config.ymAuthenticationToken = "11341adserwerwerw"
+        //Please pass unique and secure ymAuthenticationToken, this is used to identify user
+        ymChat.config.ymAuthenticationToken = "11341adse3werwerw"
 
         // End
+
+        /**
+         *  To enable Speach to text feature please uncomment below line
+         */
+         // ymChat.config.enableSpeech = true
 
         /**
          *  To use v2 widget for bot please uncomment below line
