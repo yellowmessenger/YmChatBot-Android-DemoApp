@@ -139,6 +139,12 @@ class MainActivity : AppCompatActivity() {
         //ymChat.config.customBaseUrl = "Https:/on.pre,.url"
 
         /**
+         * To use custom image as chat bot loader please set following parameter
+         * Note- Image/Gif should be deployed on public url and should be light weight for better performance
+         * */
+        //ymChat.config.customLoaderUrl = "https://example.com/test.svg"
+
+        /**
          * Setting Event Listener
          * You will receive all the events here
          * botEvent.code can be used to identify the event
