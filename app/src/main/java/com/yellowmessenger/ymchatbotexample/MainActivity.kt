@@ -1,5 +1,9 @@
 package com.yellowmessenger.ymchatbotexample
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -13,7 +17,6 @@ import com.yellowmessenger.ymchat.YMChat
 import com.yellowmessenger.ymchat.YMConfig
 import com.yellowmessenger.ymchat.models.YMBotEventResponse
 import com.yellowmessenger.ymchat.models.YellowCallback
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -126,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         /**
          *  To enable Speach to text feature please uncomment below line
          */
-         // ymChat.config.enableSpeech = true
+        // ymChat.config.enableSpeech = true
 
         /**
          *  To use v2 widget for bot please uncomment below line
@@ -165,12 +168,16 @@ class MainActivity : AppCompatActivity() {
             ymChat.config.deviceToken = deviceToken
         }
 
-        //Starting the bot activity
-        try {
-            ymChat.startChatbot(this)
-        } catch (e: Exception) {
-            //Catch and handle the exception
-            e.printStackTrace()
+        if (isInternetAvailable()) {
+            //Starting the bot activity
+            try {
+                ymChat.startChatbot(this)
+            } catch (e: Exception) {
+                //Catch and handle the exception
+                e.printStackTrace()
+            }
+        } else {
+            Toast.makeText(this, "Network issue, Please check your network connection", Toast.LENGTH_LONG).show()
         }
 
     }
@@ -193,5 +200,29 @@ class MainActivity : AppCompatActivity() {
             //Catch and handle the exception
             e.printStackTrace()
         }
+    }
+
+    private fun isInternetAvailable(): Boolean {
+        applicationContext?.let {
+            val connectivityManager =
+                it.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val nw = connectivityManager.activeNetwork ?: return false
+                val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return false
+                return when {
+                    actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                    actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                    //for other device how are able to connect with Ethernet
+                    actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                    //for check internet over Bluetooth
+                    actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
+                    else -> false
+                }
+            } else {
+                val nwInfo = connectivityManager.activeNetworkInfo ?: return false
+                return nwInfo.isConnected
+            }
+        }
+        return false
     }
 }
