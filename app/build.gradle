@@ -19,8 +19,8 @@ android {
         applicationId "ai.yellow.demo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -49,7 +49,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     //library dependency
-    implementation 'com.github.yellowmessenger:YMChatbot-Android:v1.7.0'
+    implementation 'com.github.yellowmessenger:YMChatbot-Android:v2.6.+'
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:28.4.0')

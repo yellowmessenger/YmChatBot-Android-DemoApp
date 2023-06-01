@@ -21,7 +21,7 @@ import com.yellowmessenger.ymchat.models.YellowCallback
 class MainActivity : AppCompatActivity() {
 
     private var TAG: String = "YMLog"
-    private var botId = "x1608615889375"
+    private var botId = "x1645602443989"
     private var deviceToken: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,14 +74,16 @@ class MainActivity : AppCompatActivity() {
     private fun showExtraNotificationData() {
         if (intent.extras != null && intent.extras?.getString("botId") != null) {
             val data = getDataFromIntent()
-            showNotificationAlert(intent.extras?.getString("botId").toString())
+            val botId = data["botId"]?.toString()
+            val ymAuthenticationToken = data["ymAuthenticationToken"]?.toString()
+            showNotificationAlert(botId,ymAuthenticationToken)
         }
     }
 
-    private fun showNotificationAlert(botId: String) {
+    private fun showNotificationAlert(botId: String?, ymAuthenticationToken: String?) {
         val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this);
         alertDialog.setTitle("Notification")
-        alertDialog.setMessage("Notification received for the Bot id : $botId")
+        alertDialog.setMessage("Notification received for the Bot id : $botId and ymAuthenticationToken : $ymAuthenticationToken")
         alertDialog.setPositiveButton("Ok") { dialogInterface, _ ->
             dialogInterface.dismiss()
         }
@@ -111,15 +113,6 @@ class MainActivity : AppCompatActivity() {
         // For fetching the history-
         // For bot on app.yellow.ai, make sure Configuration -> Channels -> Chat Widget -> General -> Reset Context for every load is "Not checked"
         // For Bot on cloud.yellow.ai, make sure Channels -> Web -> Setting -> Other Settings -< Show History, option is enabled
-        // Finally make sure following code is added in main function of Bot
-        /*
-         if (app.data.event && app.data.event.code === 'authenticate') {
-             return app.sendEvent({
-                 code: "verifiedUser",
-                 data: app.data.event.payload
-             });
-         }
-         */
 
         //Please pass unique and secure ymAuthenticationToken, this is used to identify user
         ymChat.config.ymAuthenticationToken = "11341adse3werwerw"
@@ -134,12 +127,12 @@ class MainActivity : AppCompatActivity() {
         /**
          *  To use v2 widget for bot please uncomment below line
          */
-        // ymChat.config.version = 2
+         ymChat.config.version = 2
 
         /**
          * If your bot is deployed on On-premise or in specific region please set the url in `customBaseUrl`
          */
-        //ymChat.config.customBaseUrl = "Https:/on.pre,.url"
+        //ymChat.config.customBaseUrl = "Https:/on.prem.url"
 
         /**
          * To use custom image as chat bot loader please set following parameter
